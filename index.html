@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#c9d3ff" />
+  <title>Pixel Flow</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap" rel="stylesheet" />
+  <script type="module" crossorigin src="/assets/index-DBZV9MLO.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BxClcjM7.css">
+</head>
+<body>
+  <canvas id="c"></canvas>
+  <div id="vignette"></div>
+
+  <div id="hud" class="hidden">
+    <div class="hud-top">
+      <button class="icon-btn" data-action="pause" aria-label="Pause">
+        <svg viewBox="0 0 24 24"><rect x="6" y="5" width="4" height="14" rx="1.5"/><rect x="14" y="5" width="4" height="14" rx="1.5"/></svg>
+      </button>
+      <div class="hud-center">
+        <div class="hud-level"><span id="hud-level">Level 1</span><small id="hud-name"></small></div>
+        <div class="bar"><i id="hud-bar"></i></div>
+      </div>
+      <button class="icon-btn" data-action="restart" aria-label="Restart">
+        <svg viewBox="0 0 24 24"><path d="M12 5a7 7 0 1 1-6.6 4.7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M4 4v6h6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div class="chips">
+      <span class="chip" id="chip-belt">Conveyor <b>0/5</b></span>
+      <span class="chip" id="chip-slots">Waiting <b>0/5</b></span>
+    </div>
+    <div id="hint" class="hint hidden">Tap a front blob to send it onto the conveyor</div>
+  </div>
+
+  <div id="loading" class="screen"><div class="spinner"></div><p>Loading…</p></div>
+
+  <div id="home" class="screen hidden">
+    <div class="panel home-panel">
+      <div class="logo"><span>PIXEL</span><span>FLOW</span></div>
+      <p class="tag">Tap. Flow. Clear every pixel.</p>
+      <button class="btn big" data-action="play" id="btn-play">Play <small id="play-level">Level 1</small></button>
+      <button class="btn ghost" data-action="levels">Levels</button>
+      <div class="toggles">
+        <button class="toggle" data-action="toggle-sound" id="tg-sound">Sound: On</button>
+        <button class="toggle" data-action="toggle-vibrate" id="tg-vibrate">Haptics: On</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="levels" class="screen hidden">
+    <div class="panel levels-panel">
+      <h2>Select Level</h2>
+      <div id="level-grid" class="level-grid"></div>
+      <button class="btn ghost" data-action="home">Back</button>
+    </div>
+  </div>
+
+  <div id="pause" class="screen hidden">
+    <div class="panel modal">
+      <h2>Paused</h2>
+      <button class="btn big" data-action="resume">Resume</button>
+      <button class="btn ghost" data-action="restart">Restart</button>
+      <button class="btn ghost" data-action="home">Home</button>
+    </div>
+  </div>
+
+  <div id="win" class="screen hidden">
+    <div class="panel modal win">
+      <div class="stars" id="win-stars"></div>
+      <h2>Level Complete!</h2>
+      <p id="win-sub"></p>
+      <button class="btn big" data-action="next" id="btn-next">Next Level</button>
+      <button class="btn ghost" data-action="restart">Replay</button>
+      <button class="btn ghost" data-action="home">Home</button>
+    </div>
+  </div>
+
+  <div id="lose" class="screen hidden">
+    <div class="panel modal lose">
+      <h2 id="lose-title">No Space</h2>
+      <p id="lose-sub">All 5 waiting slots are full.</p>
+      <button class="btn big" data-action="restart">Retry</button>
+      <button class="btn ghost" data-action="home">Home</button>
+    </div>
+  </div>
+
+</body>
+</html>
