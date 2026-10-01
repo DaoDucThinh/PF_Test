@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#bfd8ff" />
+    <title>Pixel Flow 3D</title>
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene"></canvas>
+      <div id="overlay"></div>
+      <div id="vignette"></div>
+
+      <header id="hud" class="hidden">
+        <button class="icon-btn" id="btn-home" aria-label="Menu">
+          <svg viewBox="0 0 24 24"><path d="M4 11.5 12 4l8 7.5V20a1 1 0 0 1-1 1h-4.5v-6h-5v6H5a1 1 0 0 1-1-1z"/></svg>
+        </button>
+        <div class="level-box">
+          <div class="level-pill"><span id="level-label">Level 1</span></div>
+          <div class="progress"><div class="progress-fill" id="progress-fill"></div><span id="progress-text">0%</span></div>
+        </div>
+        <button class="icon-btn" id="btn-restart" aria-label="Restart">
+          <svg viewBox="0 0 24 24"><path d="M12 5V2L7 6l5 4V7a5 5 0 1 1-5 5H5a7 7 0 1 0 7-7z"/></svg>
+        </button>
+      </header>
+
+      <div id="toast"></div>
+
+      <section id="menu" class="screen show">
+        <div class="menu-inner">
+          <h1 class="title">
+            <span class="t-pixel">
+              <i style="--c:#ff3b4e">P</i><i style="--c:#ff8c1a">I</i><i style="--c:#ffd23a">X</i><i style="--c:#22b84a">E</i><i style="--c:#2f62ff">L</i>
+            </span>
+            <span class="t-flow">FLOW</span>
+          </h1>
+          <p class="tagline">Tap the pigs. Clear the pixels. Feel the flow.</p>
+          <button class="big-btn" id="btn-play"><span>PLAY</span></button>
+          <div class="level-grid" id="level-grid"></div>
+          <div class="toggles">
+            <button class="chip" id="btn-music"><svg viewBox="0 0 24 24"><path d="M9 3v10.6A3.5 3.5 0 1 0 11 17V7h6V3z"/></svg>Music</button>
+            <button class="chip" id="btn-sfx"><svg viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>Sound</button>
+          </div>
+          <details class="how">
+            <summary>How to play</summary>
+            <ul>
+              <li>Tap the front pig of a lane to send it onto the conveyor.</li>
+              <li>Pigs automatically shoot cubes of <b>their own color</b> that face them — outer cubes shield inner ones.</li>
+              <li>The number is ammo. Empty pigs leave happily.</li>
+              <li>Pigs with ammo left after a lap hop into the <b>5 waiting slots</b>. Tap them to relaunch.</li>
+              <li>The conveyor has limited capacity. If a pig returns and every slot is full — game over!</li>
+            </ul>
+          </details>
+        </div>
+      </section>
+
+      <section id="win" class="screen modal-screen">
+        <div class="modal">
+          <div class="ribbon">LEVEL COMPLETE</div>
+          <div class="stars"><i></i><i></i><i></i></div>
+          <p class="made">You painted <b id="win-name">Heart</b>!</p>
+          <button class="big-btn" id="btn-next"><span>NEXT LEVEL</span></button>
+          <button class="ghost-btn" id="btn-replay">Replay</button>
+        </div>
+      </section>
+
+      <section id="lose" class="screen modal-screen">
+        <div class="modal lose">
+          <div class="ribbon red">OUT OF SPACE</div>
+          <svg class="sad-pig" viewBox="0 0 100 90"><ellipse cx="22" cy="22" rx="13" ry="15" fill="#ff8fb5" transform="rotate(-25 22 22)"/><ellipse cx="78" cy="22" rx="13" ry="15" fill="#ff8fb5" transform="rotate(25 78 22)"/><circle cx="50" cy="50" r="38" fill="#ffb3cc"/><ellipse cx="50" cy="60" rx="17" ry="12" fill="#ff8fb5"/><ellipse cx="44" cy="60" rx="3" ry="4.5" fill="#c4507a"/><ellipse cx="56" cy="60" rx="3" ry="4.5" fill="#c4507a"/><circle cx="35" cy="40" r="5.5" fill="#2a2350"/><circle cx="65" cy="40" r="5.5" fill="#2a2350"/><path d="M27 31l12 4M73 31l-12 4" stroke="#2a2350" stroke-width="3" stroke-linecap="round"/><path d="M68 47q3 6 0 9q-3-3 0-9z" fill="#6ec8ff"/></svg>
+          <p class="made">All waiting slots are full.</p>
+          <button class="big-btn green" id="btn-continue"><span>+1 SLOT &amp; CONTINUE</span></button>
+          <button class="big-btn" id="btn-retry"><span>TRY AGAIN</span></button>
+        </div>
+      </section>
+
+      <div id="loading"><div class="spinner"></div></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
